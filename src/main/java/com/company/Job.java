@@ -50,7 +50,8 @@ public class Job {
         } else if (this.getCoreCompetency().toString() == "") {
             this.coreCompetency.setValue("Data not available");
         }
-        return "ID: " + this.getId() + "\nName: " + getName() + "\nEmployer: " + this.getEmployer() + "\nLocation: " + this.getLocation() + "\nPosition Type: " + this.getPositionType() + "\nCore Competency: " + getCoreCompetency() + "\n";
+        return "\n" + "ID: " + this.getId() + "\nName: " + getName() + "\nEmployer: " + this.getEmployer() +
+                "\nLocation: " + this.getLocation() + "\nPosition Type: " + this.getPositionType() + "\nCore Competency: " + getCoreCompetency() + "\n";
     }
 
     @Override

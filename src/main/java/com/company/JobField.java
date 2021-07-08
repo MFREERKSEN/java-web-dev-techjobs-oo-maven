@@ -5,7 +5,7 @@ public abstract class JobField {
     private static int nextId = 1;
 
     private final int id;
-    private String value;
+    public String value;
 
     public JobField() {
         id = nextId;

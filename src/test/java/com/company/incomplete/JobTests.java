@@ -25,26 +25,25 @@ public class JobTests {
         Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Assertions.assertTrue(job3.getName() == "Product tester");
         Assertions.assertTrue(job3.getEmployer().toString().equals("ACME"));
+        Assertions.assertTrue(job3.getEmployer() instanceof Employer);
         Assertions.assertTrue(job3.getLocation().toString().equals("Desert"));
+        Assertions.assertTrue(job3.getLocation() instanceof Location);
         Assertions.assertTrue(job3.getPositionType().toString().equals("Quality control"));
+        Assertions.assertTrue(job3.getPositionType() instanceof PositionType);
         Assertions.assertTrue(job3.getCoreCompetency().toString().equals("Persistence"));
-        System.out.println(job3 instanceof Job);
+        Assertions.assertTrue(job3.getCoreCompetency() instanceof CoreCompetency);
     }
 
     @Test
     public void testJobsForEquality() {
         Assertions.assertNotEquals(job1, job2);
     }
-
-    // I found the instructions around the three toString() tests a little confusing, so I created three tests following the three bullet points:
-    // you can follow TDD if you want, or you can write the implementation first and then get the tests to pass, either is a fine approach
     @Test
     public void testToStringContainsBlankLines() {
         Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-
-        Assertions.assertTrue(job3.toString().contains("\n"));
+        Assertions.assertTrue(job3.toString().startsWith("\n"));
+        Assertions.assertTrue(job3.toString().endsWith("\n"));
     }
-
     @Test
     public void testToStringHasLabelsForEachField() {
         Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
@@ -54,9 +53,7 @@ public class JobTests {
         Assertions.assertTrue(job3.toString().contains("Location: "));
         Assertions.assertTrue(job3.toString().contains("Position Type: "));
         Assertions.assertTrue(job3.toString().contains("Core Competency: "));
-
     }
-
     @Test
     public void testToStringDataNotAvailable() {
         Job job3 = new Job("Ice cream taster", new Employer(""), new Location("Home"), new PositionType("UX"), new CoreCompetency("Tasting ability"));
