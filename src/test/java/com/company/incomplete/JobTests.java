@@ -33,23 +33,33 @@ public class JobTests {
 
     @Test
     public void testJobsForEquality() {
-Assertions.assertNotEquals(job1,job2);
+        Assertions.assertNotEquals(job1, job2);
     }
 
     // I found the instructions around the three toString() tests a little confusing, so I created three tests following the three bullet points:
     // you can follow TDD if you want, or you can write the implementation first and then get the tests to pass, either is a fine approach
     @Test
     public void testToStringContainsBlankLines() {
+        Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
+        Assertions.assertTrue(job3.toString().contains("\n"));
     }
 
     @Test
     public void testToStringHasLabelsForEachField() {
+        Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Assertions.assertTrue(job3.toString().contains("ID: "));
+        Assertions.assertTrue(job3.toString().contains("Name: "));
+        Assertions.assertTrue(job3.toString().contains("Employer: "));
+        Assertions.assertTrue(job3.toString().contains("Location: "));
+        Assertions.assertTrue(job3.toString().contains("Position Type: "));
+        Assertions.assertTrue(job3.toString().contains("Core Competency: "));
 
     }
 
     @Test
     public void testToStringDataNotAvailable() {
-
+        Job job3 = new Job("Ice cream taster", new Employer(""), new Location("Home"), new PositionType("UX"), new CoreCompetency("Tasting ability"));
+        Assertions.assertTrue((job3.toString().contains("Data not available")));
     }
 }
